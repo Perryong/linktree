@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import { Github, Linkedin, ExternalLink, Clock } from 'lucide-react'
 import { Button } from "@/components/ui/button"
 
+// A simple clock widget
 function ClockWidget() {
   const [time, setTime] = useState(new Date())
 
@@ -26,7 +27,51 @@ function ClockWidget() {
   )
 }
 
+// A reusable button for external links
+function LinkButton({
+  href,
+  label,
+  Icon,
+}: {
+  href: string
+  label: string
+  Icon: React.ComponentType<React.SVGProps<SVGSVGElement>>
+}) {
+  return (
+    <Button
+      asChild
+      variant="outline"
+      className="w-full bg-white/10 border-white text-white hover:bg-white hover:text-black transition-all duration-300"
+    >
+      <a href={href} target="_blank" rel="noopener noreferrer" className="flex items-center justify-center">
+        <Icon className="w-5 h-5 mr-2" />
+        <span className="text-lg font-medium">{label}</span>
+      </a>
+    </Button>
+  )
+}
+
 function App() {
+  // Define an array of link items you want to display
+  const linkItems = [
+    {
+      href: 'https://perryongwq.github.io/Personal/',
+      label: 'Portfolio',
+      Icon: ExternalLink,
+    },
+    {
+      href: 'https://www.linkedin.com/in/wen-qing-ong/',
+      label: 'LinkedIn',
+      Icon: Linkedin,
+    },
+    {
+      href: 'https://github.com/Perryongwq',
+      label: 'GitHub',
+      Icon: Github,
+    },
+    // You can add more items here as needed
+  ]
+
   return (
     <div
       className="min-h-screen bg-cover bg-center bg-no-repeat relative"
@@ -60,53 +105,14 @@ function App() {
 
           {/* Links Section */}
           <div className="space-y-4">
-            <Button
-              asChild
-              variant="outline"
-              className="w-full bg-white/10 border-white text-white hover:bg-white hover:text-black transition-all duration-300"
-            >
-              <a
-                href="https://perryongwq.github.io/Personal/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center"
-              >
-                <ExternalLink className="w-5 h-5 mr-2" />
-                <span className="text-lg font-medium">Portfolio</span>
-              </a>
-            </Button>
-
-            <Button
-              asChild
-              variant="outline"
-              className="w-full bg-white/10 border-white text-white hover:bg-white hover:text-black transition-all duration-300"
-            >
-              <a
-                href="https://www.linkedin.com/in/wen-qing-ong/"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center"
-              >
-                <Linkedin className="w-5 h-5 mr-2" />
-                <span className="text-lg font-medium">LinkedIn</span>
-              </a>
-            </Button>
-
-            <Button
-              asChild
-              variant="outline"
-              className="w-full bg-white/10 border-white text-white hover:bg-white hover:text-black transition-all duration-300"
-            >
-              <a
-                href="https://github.com/Perryongwq"
-                target="_blank"
-                rel="noopener noreferrer"
-                className="flex items-center justify-center"
-              >
-                <Github className="w-5 h-5 mr-2" />
-                <span className="text-lg font-medium">GitHub</span>
-              </a>
-            </Button>
+            {linkItems.map(({ href, label, Icon }) => (
+              <LinkButton
+                key={label}
+                href={href}
+                label={label}
+                Icon={Icon}
+              />
+            ))}
           </div>
         </div>
       </div>
