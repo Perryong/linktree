@@ -4,6 +4,7 @@ import { Github, Linkedin, ExternalLink } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import DigitalClock from "./components/widget/digitalclock"; 
 import DateWidget from "./components/widget/datewidget";
+import WeatherWidget from "./components/widget/weatherwidget";
 
 // ----------------- reusable link button -----------------
 function LinkButton({
@@ -62,6 +63,7 @@ function App() {
           {/* ---------- clock ---------- */}
           <DateWidget timeZone="Asia/Singapore" />
           <DigitalClock timeZone="Asia/Singapore" />
+          <WeatherWidget location="Singapore" />
 
           {/* ---------- profile ---------- */}
           <div className="text-center">
