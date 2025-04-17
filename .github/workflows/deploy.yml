@@ -1,40 +1,42 @@
 name: Deploy to GitHub Pages
 
+# ────────────────────────────────────────────
+# Trigger: only AFTER a PR into `main` is merged
+# ────────────────────────────────────────────
 on:
   pull_request:
-    types: [closed]      # fires when the PR is closed
-    branches: [main]     # we only care about PRs targeting main
+    types: [closed]   # fired when the PR is closed
+    branches: [main]  # and the target branch is main
+
+permissions:
+  contents: write
 
 jobs:
   build-and-deploy:
-    if: github.event.pull_request.merged == true   # ensure it was merged, not just closed
+    # run only if the closed PR was merged (not just closed)
+    if: github.event.pull_request.merged == true
     runs-on: ubuntu-latest
 
     steps:
-      # 1 – checkout repo at the merge commit
-      - name: Checkout code
+      - name: Checkout
         uses: actions/checkout@v4
-        with:
-          fetch-depth: 0
 
-      # 2 – set up Node
-      - name: Setup Node
+      - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: 20
-          cache: "npm"
+          node-version: '20'
+          cache: npm
 
-      # 3 – install dependencies
       - name: Install dependencies
-        run: npm ci --prefer-offline --no-audit
-
-      # 4 – build for production
+        run: npm ci
+        
       - name: Build
         run: npm run build
+        env:
+          BASE_URL: "/${{ github.event.repository.name }}"
 
-      # 5 – deploy the `dist` folder to GitHub Pages
-      - name: Deploy to Pages
-        uses: peaceiris/actions-gh-pages@v4
+      - name: Deploy to GitHub Pages
+        uses: JamesIves/github-pages-deploy-action@v4
         with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
+          folder: dist
+          branch: gh-pages
