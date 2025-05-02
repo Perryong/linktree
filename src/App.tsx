@@ -1,5 +1,5 @@
 import React from "react";
-import { Github, Linkedin, ExternalLink } from "lucide-react";
+import { Github, Linkedin, ExternalLink, Instagram } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import DigitalClock from "./components/widget/digitalclock"; 
@@ -45,6 +45,7 @@ function App() {
     },
     { href: "https://www.linkedin.com/in/wen-qing-ong/", label: "LinkedIn", Icon: Linkedin },
     { href: "https://github.com/Perryongwq", label: "GitHub", Icon: Github },
+    {href: "https://perryong.github.io/image-gallery-v2/", label: "Photo Gallery", Icon: Instagram},
   ];
 
   return (
