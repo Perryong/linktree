@@ -1,5 +1,5 @@
 import React from "react";
-import { Github, Linkedin, ExternalLink, Instagram } from "lucide-react";
+import { Github, Linkedin, ExternalLink, Instagram,LineChart } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import DigitalClock from "./components/widget/digitalclock"; 
@@ -46,6 +46,7 @@ function App() {
     { href: "https://www.linkedin.com/in/wen-qing-ong/", label: "LinkedIn", Icon: Linkedin },
     { href: "https://github.com/Perryongwq", label: "GitHub", Icon: Github },
     {href: "https://perryong.github.io/image-gallery-v2/", label: "Photo Gallery", Icon: Instagram},
+    {href: "https://portfolio-tracker-wheat.vercel.app/", label: "Portfolio Tracker", Icon: LineChart},
   ];
 
   return (
@@ -60,7 +61,7 @@ function App() {
 
       {/* content */}
       <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
-        <div className="max-w-md w-full space-y-8 backdrop-blur-sm bg-white/10 p-8 rounded-2xl shadow-2xl">
+        <div className="max-w-md w-full space-y-2 backdrop-blur-sm bg-white/10 p-8 rounded-2xl shadow-2xl">
           {/* ---------- clock ---------- */}
           <DateWidget timeZone="Asia/Singapore" />
           <DigitalClock timeZone="Asia/Singapore" />
@@ -89,7 +90,7 @@ function App() {
       </div>
 
       {/* footer credit */}
-      <footer className="absolute bottom-2 left-1/2 -translate-x-1/2 z-20 text-white text-xl bg-black/30 px-4 py-2 rounded-md">
+      <footer className="absolute bottom-2 left-2 z-20 text-white text-xl bg-black/30 px-4 py-2 rounded-md">
         Artwork by{" "}
         <a
           href="https://x.com/vince19visuals"
