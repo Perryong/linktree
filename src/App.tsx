@@ -46,7 +46,7 @@ function App() {
     { href: "https://www.linkedin.com/in/wen-qing-ong/", label: "LinkedIn", Icon: Linkedin },
     { href: "https://github.com/Perryongwq", label: "GitHub", Icon: Github },
     {href: "https://perryong.github.io/image-gallery-v2/", label: "Photo Gallery", Icon: Instagram},
-    {href: "https://portfolio-tracker-wheat.vercel.app/", label: "Portfolio Tracker", Icon: LineChart},
+    {href: "https://portfolio-tracker-weld.vercel.app/", label: "Portfolio Tracker", Icon: LineChart},
   ];
 
   return (
