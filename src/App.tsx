@@ -39,7 +39,7 @@ function LinkButton({
 function App() {
   const linkItems = [
     {
-      href: "https://perryongwq.github.io/Personal/",
+      href: "https://perryong.github.io/personal-portfolio/",
       label: "Portfolio",
       Icon: ExternalLink,
     },
