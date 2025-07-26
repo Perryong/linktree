@@ -1,4 +1,3 @@
-import React from "react";
 import { ArrowLeft, Github } from "lucide-react";
 import GitHubContributionGraph from "@/components/widget/githubcontributiongraph";
 import GitHubActivity from "@/components/widget/githubactivity";

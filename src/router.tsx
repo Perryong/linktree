@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import { useEffect, useState } from 'react';
 import App from './App';
 import GitHubPage from './pages/github';
 
