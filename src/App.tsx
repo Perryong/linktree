@@ -55,13 +55,13 @@ function App() {
   const navItems: NavItem[] = [
     {
       label: "Home",
-      href: basePath,
+      href: `${basePath}#/`,
       icon: Home,
       isActive: true,
     },
     {
       label: "GitHub Activity",
-      href: `${basePath}github`,
+      href: `${basePath}#/github`,
       icon: Github,
     },
   ];

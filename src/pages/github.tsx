@@ -11,12 +11,12 @@ export default function GitHubPage() {
   const navItems: NavItem[] = [
     {
       label: "Home",
-      href: basePath,
+      href: `${basePath}#/`,
       icon: ArrowLeft,
     },
     {
       label: "GitHub Activity",
-      href: `${basePath}github`,
+      href: `${basePath}#/github`,
       icon: Github,
       isActive: true,
     },
@@ -39,7 +39,7 @@ export default function GitHubPage() {
             className="mr-2 text-white"
             asChild
           >
-            <a href={basePath}>
+            <a href={`${basePath}#/`}>
               <ArrowLeft className="h-6 w-6" />
             </a>
           </Button>

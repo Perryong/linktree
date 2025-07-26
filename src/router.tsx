@@ -3,35 +3,29 @@ import App from './App';
 import GitHubPage from './pages/github';
 
 export default function Router() {
-  const [currentPath, setCurrentPath] = useState(window.location.pathname);
-  
-  // Get the base path from import.meta.env or use default
-  const basePath = import.meta.env.BASE_URL || '/linktree/';
+  // Use hash-based routing instead of path-based routing for GitHub Pages compatibility
+  const [currentRoute, setCurrentRoute] = useState(() => {
+    // Get the current route from the hash or default to root
+    return window.location.hash.slice(1) || '/';
+  });
 
   useEffect(() => {
-    const handleLocationChange = () => {
-      setCurrentPath(window.location.pathname);
+    // Handle hash changes (user navigation)
+    const handleHashChange = () => {
+      setCurrentRoute(window.location.hash.slice(1) || '/');
     };
 
-    // Listen for popstate events (browser back/forward)
-    window.addEventListener('popstate', handleLocationChange);
-
+    window.addEventListener('hashchange', handleHashChange);
     return () => {
-      window.removeEventListener('popstate', handleLocationChange);
+      window.removeEventListener('hashchange', handleHashChange);
     };
   }, []);
 
-  // Helper function to check if current path matches a route
-  const matchPath = (path: string) => {
-    // Check if the current path matches the base path + given route
-    return currentPath === `${basePath}${path}`.replace(/\/+$/, '');
-  };
-
-  // Simple client-side routing with base path awareness
-  if (matchPath('github')) {
-    return <GitHubPage />;
+  // Simple client-side routing with hash-based navigation
+  switch (currentRoute) {
+    case '/github':
+      return <GitHubPage />;
+    default:
+      return <App />;
   }
-  
-  // Default route (home)
-  return <App />;
 }
