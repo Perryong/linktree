@@ -43,7 +43,7 @@ export default function GitHubPage() {
             </a>
           </Button>
           <h1 className="text-2xl font-bold text-white flex items-center">
-            <Github className="mr-2 h-6 w-6" />
+            <Github className="mr-3 h-6 w-6" />
             GitHub Activity
           </h1>
         </header>
