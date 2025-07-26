@@ -32,10 +32,11 @@ const DateWidget: React.FC<DateWidgetProps> = ({
     return `${parts[0]} / ${parts[1]} / ${parts[2]}`;
   })();
 
+
   return (
     <div
       className={cn(
-        "flex items-center justify-center space-x-2 text-white",
+        "flex items-center justify-center space-x-2 text-white shadow-text",
         className
       )}
     >

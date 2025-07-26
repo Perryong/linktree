@@ -1,10 +1,11 @@
 import React from "react";
-import { Github, Linkedin, ExternalLink, Instagram,LineChart } from "lucide-react";
+import { Github, Linkedin, ExternalLink, Instagram, LineChart, Home } from "lucide-react";
 
 import { Button } from "@/components/ui/button";
 import DigitalClock from "./components/widget/digitalclock"; 
 import DateWidget from "./components/widget/datewidget";
 import WeatherWidget from "./components/widget/weatherwidget";
+import NavBar, { NavItem } from "./components/layout/navbar";
 
 // ----------------- reusable link button -----------------
 function LinkButton({
@@ -49,6 +50,22 @@ function App() {
     {href: "https://portfolio-tracker-weld.vercel.app/", label: "Portfolio Tracker", Icon: LineChart},
   ];
 
+  const basePath = import.meta.env.BASE_URL || '/linktree/';
+
+  const navItems: NavItem[] = [
+    {
+      label: "Home",
+      href: basePath,
+      icon: Home,
+      isActive: true,
+    },
+    {
+      label: "GitHub Activity",
+      href: `${basePath}github`,
+      icon: Github,
+    },
+  ];
+
   return (
     <div
       className="min-h-screen bg-cover bg-center bg-no-repeat relative"
@@ -60,7 +77,7 @@ function App() {
       <div className="absolute inset-0 bg-gradient-to-b from-black/10 to-black/20" />
 
       {/* content */}
-      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8">
+      <div className="relative z-10 min-h-screen flex flex-col items-center justify-center px-4 sm:px-6 lg:px-8 pt-16">
         <div className="max-w-md w-full space-y-2 backdrop-blur-sm bg-white/10 p-8 rounded-2xl shadow-2xl">
           {/* ---------- clock ---------- */}
           <DateWidget timeZone="Asia/Singapore" />
@@ -69,14 +86,14 @@ function App() {
 
           {/* ---------- profile ---------- */}
           <div className="text-center">
-            <h1 className="text-4xl font-bold text-white mb-2 tracking-tight">
-              Wen Qing Ong
+            <h1 className="text-4xl font-bold text-white mb-2 tracking-tight shadow-text">
+              Wen Qing Ong
             </h1>
-            <p className="text-2xl font-bold text-white mb-2 tracking-tight">
-              Software Developer &amp;
+            <p className="text-2xl font-bold text-white mb-2 tracking-tight shadow-text">
+              Software Developer &amp;
             </p>
-            <p className="text-2xl font-bold text-white mb-2 tracking-tight">
-              Tech Enthusiast
+            <p className="text-2xl font-bold text-white mb-2 tracking-tight shadow-text">
+              Tech Enthusiast
             </p>
           </div>
 
@@ -88,6 +105,9 @@ function App() {
           </div>
         </div>
       </div>
+
+      {/* Navigation Bar */}
+      <NavBar items={navItems} />
 
       {/* footer credit */}
       <footer className="absolute bottom-2 left-2 z-20 text-white text-xl bg-black/30 px-4 py-2 rounded-md">

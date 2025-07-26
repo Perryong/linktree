@@ -34,7 +34,7 @@ const DigitalClock: React.FC<DigitalClockProps> = ({
 
   /* original wrapper classes kept intact */
   const wrapper = cn(
-    "flex items-center justify-center space-x-2 text-white mb-6",
+    "flex items-center justify-center space-x-2 text-white mb-6 shadow-text",
     className
   );
 

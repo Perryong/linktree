@@ -156,7 +156,7 @@ export default function WeatherWidget({
   return (
     <div
       className={cn(
-        "flex items-center justify-center space-x-2 text-white",
+        "flex items-center justify-center space-x-2 text-white shadow-text",
         className
       )}
       title={description}
